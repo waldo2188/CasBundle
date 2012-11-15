@@ -1,5 +1,5 @@
 {
-    "name": "ecnerta/cas-bundle",
+    "name": "sensio/cas-bundle",
     "type": "symfony-bundle",
     "description": "CasBundle dev by Sensio",
     "keywords": ["cas", "symfony2", "bundle", "ecnerta"],
