@@ -20,11 +20,10 @@
         "twig/twig": ">=1.5"
     },
 
+
     "autoload": {
-        "psr-0": {
-            "ECnerta\\Bundle\\CasBundle": ""
-        }
+        "psr-0": { "Sensio\\Bundle\\CasBundle": "" }
     },
 
-    "target-dir": "ECnerta/Bundle/CasBundle"
+    "target-dir": "Sensio/Bundle/CasBundle",
 }
