@@ -2,7 +2,7 @@
     "name": "sensio/cas-bundle",
     "type": "symfony-bundle",
     "description": "CasBundle dev by Sensio",
-    "keywords": ["cas", "symfony2", "bundle", "ecnerta"],
+    "keywords": ["cas", "symfony2", "bundle", "sensio"],
     "license": "MIT",
 
     "authors": [
@@ -16,8 +16,7 @@
 
     "require": {
         "php": ">=5.3.2",
-        "symfony/framework-bundle": "2.*,<2.2",
-        "twig/twig": ">=1.5"
+        "symfony/framework-bundle": "2.*,<2.2"
     },
 
 
