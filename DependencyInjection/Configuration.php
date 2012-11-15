@@ -1,6 +1,6 @@
 <?php
 
-namespace Sensio\CasBundle\DependencyInjection;
+namespace Sensio\Bundle\CasBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

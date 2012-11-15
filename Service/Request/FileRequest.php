@@ -1,10 +1,10 @@
 <?php
 
-namespace Sensio\CasBundle\Service\Request;
+namespace Sensio\Bundle\CasBundle\Service\Request;
 
-use Sensio\CasBundle\Service\Request\RequestInterface;
-use Sensio\CasBundle\Service\Request\Request;
-use Sensio\CasBundle\Service\Response\ResponseInterface;
+use Sensio\Bundle\CasBundle\Service\Request\RequestInterface;
+use Sensio\Bundle\CasBundle\Service\Request\Request;
+use Sensio\Bundle\CasBundle\Service\Response\ResponseInterface;
 
 class FileRequest extends Request implements RequestInterface
 {

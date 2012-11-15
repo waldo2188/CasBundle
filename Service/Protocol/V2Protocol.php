@@ -1,9 +1,9 @@
 <?php
 
-namespace Sensio\CasBundle\Service\Protocol;
+namespace Sensio\Bundle\CasBundle\Service\Protocol;
 
-use Sensio\CasBundle\Service\Protocol\Protocol;
-use Sensio\CasBundle\Service\Protocol\ProtocolInterface;
+use Sensio\Bundle\CasBundle\Service\Protocol\Protocol;
+use Sensio\Bundle\CasBundle\Service\Protocol\ProtocolInterface;
 
 class V2Protocol extends Protocol implements ProtocolInterface
 {

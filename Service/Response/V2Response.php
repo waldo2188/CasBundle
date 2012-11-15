@@ -1,9 +1,9 @@
 <?php
 
-namespace Sensio\CasBundle\Service\Response;
+namespace Sensio\Bundle\CasBundle\Service\Response;
 
-use Sensio\CasBundle\Service\Response\Response;
-use Sensio\CasBundle\Service\Response\ResponseInterface;
+use Sensio\Bundle\CasBundle\Service\Response\Response;
+use Sensio\Bundle\CasBundle\Service\Response\ResponseInterface;
 
 class V2Response extends Response implements ResponseInterface
 {

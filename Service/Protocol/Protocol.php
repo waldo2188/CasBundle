@@ -1,6 +1,6 @@
 <?php
 
-namespace Sensio\CasBundle\Service\Protocol;
+namespace Sensio\Bundle\CasBundle\Service\Protocol;
 
 abstract class Protocol
 {

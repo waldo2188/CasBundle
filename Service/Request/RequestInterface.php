@@ -1,8 +1,8 @@
 <?php
 
-namespace Sensio\CasBundle\Service\Request;
+namespace Sensio\Bundle\CasBundle\Service\Request;
 
-use Sensio\CasBundle\Service\Response\ResponseInterface;
+use Sensio\Bundle\CasBundle\Service\Response\ResponseInterface;
 
 interface RequestInterface
 {

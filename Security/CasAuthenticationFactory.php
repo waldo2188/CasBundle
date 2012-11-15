@@ -1,6 +1,6 @@
 <?php
 
-namespace Sensio\CasBundle\Security;
+namespace Sensio\Bundle\CasBundle\Security;
 
 use Symfony\Bundle\SecurityBundle\DependencyInjection\Security\Factory\SecurityFactoryInterface;
 use Symfony\Component\Config\Definition\Builder\NodeDefinition;

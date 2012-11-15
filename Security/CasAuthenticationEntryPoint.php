@@ -1,12 +1,12 @@
 <?php
 
-namespace Sensio\CasBundle\Security;
+namespace Sensio\Bundle\CasBundle\Security;
 
-use Sensio\CasBundle\Service\Cas;
+use Sensio\Bundle\CasBundle\Service\Cas;
 use Symfony\Component\Security\Http\EntryPoint\AuthenticationEntryPointInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\HttpFoundation\Request;
-use Sensio\CasBundle\Service\Client;
+use Sensio\Bundle\CasBundle\Service\Client;
 
 class CasAuthenticationEntryPoint implements AuthenticationEntryPointInterface
 {
