@@ -1,6 +1,6 @@
 <?php
 
-namespace Sensio\CasBundle\Security;
+namespace Sensio\Bundle\CasBundle\Security;
 
 use Symfony\Component\Security\Core\Authentication\Token\AbstractToken;
 

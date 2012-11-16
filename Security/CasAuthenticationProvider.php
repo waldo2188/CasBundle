@@ -1,6 +1,6 @@
 <?php
 
-namespace Sensio\CasBundle\Security;
+namespace Sensio\Bundle\CasBundle\Security;
 
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
@@ -8,7 +8,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Token;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authentication\Provider\PreAuthenticatedAuthenticationProvider;
 use Symfony\Component\Security\Core\Authentication\Provider\AuthenticationProviderInterface;
-use Sensio\CasBundle\Security\CasAuthenticationToken;
+use Sensio\Bundle\CasBundle\Security\CasAuthenticationToken;
 
 class CasAuthenticationProvider implements AuthenticationProviderInterface
 {

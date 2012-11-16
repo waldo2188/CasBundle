@@ -5,11 +5,11 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
 
-        <parameter key="sensio_cas.class">Sensio\CasBundle\Service\Cas</parameter>
-        <parameter key="security.authentication.cas_entry_point.class">Sensio\CasBundle\Security\CasAuthenticationEntryPoint</parameter>
-        <parameter key="security.authentication.listener.cas.class">Sensio\CasBundle\Security\CasAuthenticationListener</parameter>
-        <parameter key="security.authentication.provider.cas.class">Sensio\CasBundle\Security\CasAuthenticationProvider</parameter>
-        <parameter key="security.logout.handler.cas.class">Sensio\CasBundle\Security\CasLogoutHandler</parameter>
+        <parameter key="sensio_cas.class">Sensio\Bundle\CasBundle\Service\Cas</parameter>
+        <parameter key="security.authentication.cas_entry_point.class">Sensio\Bundle\CasBundle\Security\CasAuthenticationEntryPoint</parameter>
+        <parameter key="security.authentication.listener.cas.class">Sensio\Bundle\CasBundle\Security\CasAuthenticationListener</parameter>
+        <parameter key="security.authentication.provider.cas.class">Sensio\Bundle\CasBundle\Security\CasAuthenticationProvider</parameter>
+        <parameter key="security.logout.handler.cas.class">Sensio\Bundle\CasBundle\Security\CasLogoutHandler</parameter>
 
     </parameters>
     <services>

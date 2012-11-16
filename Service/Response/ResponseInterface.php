@@ -1,6 +1,6 @@
 <?php
 
-namespace Sensio\CasBundle\Service\Response;
+namespace Sensio\Bundle\CasBundle\Service\Response;
 
 interface ResponseInterface
 {
