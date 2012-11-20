@@ -8,7 +8,7 @@ class CasAuthenticationToken extends AbstractToken
 {
     protected $casAttributes;
 
-    public function __construct($user, array $attributes = array(), array $roles = array())
+    public function __construct($user, array $attributes = null, array $roles = array())
     {
         parent::__construct($roles);
 
