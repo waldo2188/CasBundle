@@ -5,8 +5,6 @@ Add CAS authentication to Symfony2
 -  Unlike SimpleCasBundle_, it's based on the Symfony2 security component.
 -  Proxy features are not yet available.
 
-//TODO FINIR LA DOC
-
 
 Install the Bundle
 ------------------
@@ -38,9 +36,7 @@ Install the Bundle
 Configuration
 -------------
 
-Deadly simple, here is an example:
-
-.. configuration-block::
+config.yml
 
     .. code-block:: yaml
 
@@ -50,9 +46,8 @@ Deadly simple, here is an example:
             cert:    /path/to/my/cert.pem       # ssl cert file path (if needed)
             request: curl                       # request adapter (curl, http or file)
 
-Configuration in the security.yml
 
-.. configuration-block::
+security.yml
 
     .. code-block:: yaml
 
@@ -66,13 +61,12 @@ Configuration in the security.yml
                 pattern:  ^/
                 cas: true
 
-
+services.xml
     .. code-block:: xml
+
         <service id="security_user_provider_entity" class="%security.user.provider.entity.class%" public="false">
-            <argument /> <!-- The class of the service must implement Symfony\Component\Security\Core\User\UserProviderInterface -->
+            <argument /> <!-- The class of the service must implement \Symfony\Component\Security\Core\User\UserProviderInterface -->
         </service>
-
-
 
 
 .. _CAS:             http://www.jasig.org/cas
