@@ -1,5 +1,5 @@
 {
-    "name": "waldo2188/cas-bundle",
+    "name": "sensio/cas-bundle",
     "type": "symfony-bundle",
     "description": "CasBundle dev by Sensio",
     "keywords": ["cas", "symfony2", "bundle", "sensio"],
@@ -21,8 +21,8 @@
 
 
     "autoload": {
-        "psr-0": { "Waldo2188\\Bundle\\CasBundle": "" }
+        "psr-0": { "Sensio\\Bundle\\CasBundle": "" }
     },
 
-    "target-dir": "Waldo2188/Bundle/CasBundle"
+    "target-dir": "Sensio/Bundle/CasBundle"
 }
