@@ -60,6 +60,7 @@ class CasAuthenticationListener implements ListenerInterface
         }
 
         $token = new CasAuthenticationToken($username, $attributes);
+        
 
         try {
 
@@ -70,23 +71,26 @@ class CasAuthenticationListener implements ListenerInterface
             }
 
             $this->securityContext->setToken($token);
-        } catch (AuthenticationException $failed) {
-            $this->securityContext->setToken(null);
+            
+        }  catch (\Exception $failed) {
 
-            if (null !== $this->logger) {
-                $this->logger->debug(sprintf("Cleared security context due to exception: %s", $failed->getMessage()));
-            }
-        } catch (\Exception $e) {
+            if($failed instanceof \Symfony\Component\Security\Core\Exception\AuthenticationException ||
+               is_subclass_of($failed, 'Symfony\Component\Security\Core\Exception\AuthenticationException')) {
 
-            if(is_subclass_of($e, 'Symfony\Component\Security\Core\Exception\AuthenticationException')) {
-                $response = $this->authenticationFailureHandler->onAuthenticationFailure($request, $e);
+                $this->securityContext->setToken(null);
+
+                if (null !== $this->logger) {
+                    $this->logger->debug(sprintf("Cleared security context due to exception: %s", $failed->getMessage()));
+                }
+
+                $response = $this->authenticationFailureHandler->onAuthenticationFailure($request, $failed);
 
                 if ($response != null) {
                     return $event->setResponse($response);
                 }
             }
 
-            throw $e;
+            throw $failed;
         }
 
         $response = $this->authenticationSuccessHandler->onAuthenticationSuccess($request, $token);
@@ -96,6 +100,7 @@ class CasAuthenticationListener implements ListenerInterface
         }
 
     }
+   
 
     protected function getTokenData(Request $request)
     {
