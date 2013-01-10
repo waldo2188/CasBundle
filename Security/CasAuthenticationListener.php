@@ -2,7 +2,6 @@
 
 namespace Sensio\Bundle\CasBundle\Security;
 
-use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\Exception\BadCredentialsException;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
