@@ -2,14 +2,20 @@
 
 namespace Sensio\Bundle\CasBundle\Security;
 
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Symfony\Component\Security\Core\Exception\BadCredentialsException;
 use Symfony\Component\Security\Core\SecurityContextInterface;
+
+use Symfony\Component\Security\Http\Firewall\ListenerInterface;
 use Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler;
 use Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler;
+
 use Symfony\Component\HttpKernel\Log\LoggerInterface;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Exception\BadCredentialsException;
-use Symfony\Component\Security\Http\Firewall\ListenerInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+
+use Symfony\Component\HttpFoundation\Request;
+
+
 use Sensio\Bundle\CasBundle\Service\Cas;
 
 class CasAuthenticationListener implements ListenerInterface
@@ -72,10 +78,12 @@ class CasAuthenticationListener implements ListenerInterface
             }
         } catch (\Exception $e) {
 
-            $response = $this->authenticationFailureHandler->onAuthenticationFailure($request, $e);
+            if(is_subclass_of($e, 'Symfony\Component\Security\Core\Exception\AuthenticationException')) {
+                $response = $this->authenticationFailureHandler->onAuthenticationFailure($request, $e);
 
-            if ($response != null) {
-                return $event->setResponse($response);
+                if ($response != null) {
+                    return $event->setResponse($response);
+                }
             }
 
             throw $e;
@@ -86,6 +94,7 @@ class CasAuthenticationListener implements ListenerInterface
         if ($response != null) {
             return $event->setResponse($response);
         }
+
     }
 
     protected function getTokenData(Request $request)
