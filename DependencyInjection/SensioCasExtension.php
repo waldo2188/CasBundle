@@ -10,6 +10,7 @@ use Symfony\Component\Config\Definition\Processor;
 
 class SensioCasExtension extends Extension
 {
+
     public function load(array $configs, ContainerBuilder $container)
     {
         $processor = new Processor();
@@ -19,11 +20,12 @@ class SensioCasExtension extends Extension
         $config = $processor->processConfiguration($configuration, $configs);
 
         foreach ($config as $key => $value) {
-            $container->setParameter('sensio_cas.'.$key, $value);
+            $container->setParameter('sensio_cas.' . $key, $value);
         }
 
         // load service
-        $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('cas.xml');
     }
+
 }

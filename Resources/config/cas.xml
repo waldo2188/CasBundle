@@ -29,16 +29,18 @@
             <argument type="service" id="sensio_cas" />
         </service>
 
-        <service id="cas.security.authentication.provider" class="%security.authentication.provider.cas.class%" public="true">
+        <service id="security.authentication.provider.cas" class="%security.authentication.provider.cas.class%" public="true">
             <argument type="service" id="security_user_provider_entity" /> <!-- User Provider -->
             <argument type="service" id="security.user_checker"/>
         </service>
 
-        <service id="cas.security.authentication.listener" class="%security.authentication.listener.cas.class%" public="false">
+        <service id="security.authentication.listener.cas" class="%security.authentication.listener.cas.class%" public="false">
             <argument type="service" id="security.context"/>
             <argument type="service" id="security.authentication.manager" />
             <argument type="service" id="sensio_cas" />
             <argument type="service" id="logger" on-invalid="null" />
+            <argument /> <!-- DefaultAuthenticationSuccessHandler -->
+            <argument /> <!-- DefaultAuthenticationFailureHandler -->
         </service>
 
     </services>

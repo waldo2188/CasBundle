@@ -6,6 +6,7 @@ use Symfony\Component\Security\Core\Authentication\Token\AbstractToken;
 
 class CasAuthenticationToken extends AbstractToken
 {
+
     protected $casAttributes;
 
     public function __construct($user, array $attributes = null, array $roles = array())
@@ -27,4 +28,5 @@ class CasAuthenticationToken extends AbstractToken
     {
         return $this->casAttributes;
     }
+
 }

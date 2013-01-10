@@ -12,6 +12,7 @@ use Sensio\Bundle\CasBundle\Security\CasAuthenticationToken;
 
 class CasAuthenticationProvider implements AuthenticationProviderInterface
 {
+
     protected $userProvider;
     protected $userChecker;
 
@@ -44,4 +45,5 @@ class CasAuthenticationProvider implements AuthenticationProviderInterface
     {
         return $token instanceof CasAuthenticationToken;
     }
+
 }

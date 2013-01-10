@@ -3,7 +3,8 @@
 namespace Sensio\Bundle\CasBundle\Security;
 
 use Symfony\Component\Security\Core\SecurityContextInterface;
-use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
+use Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler;
+use Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler;
 use Symfony\Component\HttpKernel\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\BadCredentialsException;
@@ -17,13 +18,19 @@ class CasAuthenticationListener implements ListenerInterface
     protected $cas;
     protected $securityContext;
     protected $authenticationManager;
+    protected $failureHandler;
+    protected $authenticationSuccessHandler;
+    protected $authenticationFailureHandler;
 
-    public function __construct(SecurityContextInterface $securityContext, AuthenticationManagerInterface $authenticationManager, Cas $cas, LoggerInterface $logger = null)
+    public function __construct(SecurityContextInterface $securityContext, $authenticationManager, Cas $cas, LoggerInterface $logger = null, DefaultAuthenticationSuccessHandler $defaultAuthenticationSuccessHandler, DefaultAuthenticationFailureHandler $defaultAuthenticationFailureHandler)
     {
+
         $this->securityContext = $securityContext;
         $this->authenticationManager = $authenticationManager;
         $this->cas = $cas;
         $this->logger = $logger;
+        $this->authenticationSuccessHandler = $defaultAuthenticationSuccessHandler;
+        $this->authenticationFailureHandler = $defaultAuthenticationFailureHandler;
     }
 
     public function handle(GetResponseEvent $event)
@@ -46,8 +53,11 @@ class CasAuthenticationListener implements ListenerInterface
             }
         }
 
+        $token = new CasAuthenticationToken($username, $attributes);
+
         try {
-            $token = $this->authenticationManager->authenticate(new CasAuthenticationToken($username, $attributes));
+
+            $token = $this->authenticationManager->authenticate($token);
 
             if (null !== $this->logger) {
                 $this->logger->debug(sprintf('Authentication success: %s', $token));
@@ -60,6 +70,21 @@ class CasAuthenticationListener implements ListenerInterface
             if (null !== $this->logger) {
                 $this->logger->debug(sprintf("Cleared security context due to exception: %s", $failed->getMessage()));
             }
+        } catch (\Exception $e) {
+
+            $response = $this->authenticationFailureHandler->onAuthenticationFailure($request, $e);
+
+            if ($response != null) {
+                return $event->setResponse($response);
+            }
+
+            throw $e;
+        }
+
+        $response = $this->authenticationSuccessHandler->onAuthenticationSuccess($request, $token);
+
+        if ($response != null) {
+            return $event->setResponse($response);
         }
     }
 

@@ -6,11 +6,11 @@ use Symfony\Component\Security\Http\Logout\LogoutHandlerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-
 use Sensio\Bundle\CasBundle\Service\Cas;
 
 class CasLogoutHandler implements LogoutHandlerInterface
 {
+
     protected $cas;
 
     public function __construct(Cas $cas)
@@ -22,4 +22,5 @@ class CasLogoutHandler implements LogoutHandlerInterface
     {
         return $this->cas->getLogoutResponse($request);
     }
+
 }
